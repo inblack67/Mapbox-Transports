@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import StationContext from './context/stations/stationContext'
 
 const SearchStation = () => {
@@ -10,7 +10,7 @@ const SearchStation = () => {
 
     const stationContext = useContext(StationContext);
 
-    const { getStations } = stationContext
+    const { getStations, getLive } = stationContext
 
     const onChange = e => {
         setFormData({

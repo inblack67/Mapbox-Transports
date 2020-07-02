@@ -1,0 +1,299 @@
+{
+    "date": "2015-01-20",
+    "time_of_day": "12:46",
+    "request_time": "2015-01-20T12:46:42+00:00",
+    "station_name": "London St Pancras",
+    "station_code": "STP",
+    "departures": {
+      "all": [
+        {
+          "service_timetable": {
+            "id": "http://transportapi.com/v3/uk/train/service/train_uid:L05032/2015-01-20/timetable.json?app_id=...&app_key=...&live=true"
+          },
+          "category": "XX",
+          "mode": "train",
+          "service": "22720000",
+          "train_uid": "L05032",
+          "platform": "A",
+          "operator": "TL",
+          "aimed_departure_time": "12:40",
+          "aimed_arrival_time": "12:39",
+          "aimed_pass_time": null,
+          "origin_name": "Bedford",
+          "source": "Network Rail",
+          "destination_name": "Three Bridges",
+          "status": "LATE",
+          "expected_arrival_time": "13:11",
+          "expected_departure_time": "13:12",
+          "best_arrival_estimate_mins": 24,
+          "best_departure_estimate_mins": 25
+        },
+        {
+          "service_timetable": {
+            "id": "http://transportapi.com/v3/uk/train/service/train_uid:L05026/2015-01-20/timetable.json?app_id=...&app_key=...&live=true"
+          },
+          "category": "XX",
+          "mode": "train",
+          "service": "22721000",
+          "train_uid": "L05026",
+          "platform": "B",
+          "operator": "TL",
+          "aimed_departure_time": "12:48",
+          "aimed_arrival_time": "12:48",
+          "aimed_pass_time": null,
+          "origin_name": "Three Bridges",
+          "source": "Network Rail",
+          "destination_name": "Bedford",
+          "status": "LATE",
+          "expected_arrival_time": "12:52",
+          "expected_departure_time": "12:52",
+          "best_arrival_estimate_mins": 5,
+          "best_departure_estimate_mins": 5
+        },
+        {
+          "service_timetable": {
+            "id": "http://transportapi.com/v3/uk/train/service/train_uid:L03096/2015-01-20/timetable.json?app_id=...&app_key=...&live=true"
+          },
+          "category": "XX",
+          "mode": "train",
+          "service": "22720001",
+          "train_uid": "L03096",
+          "platform": "A",
+          "operator": "TL",
+          "aimed_departure_time": "12:48",
+          "aimed_arrival_time": "12:47",
+          "aimed_pass_time": null,
+          "origin_name": "St Albans",
+          "source": "Network Rail",
+          "destination_name": "Sutton (Surrey)",
+          "status": "ON TIME",
+          "expected_arrival_time": "12:47",
+          "expected_departure_time": "12:48",
+          "best_arrival_estimate_mins": 0,
+          "best_departure_estimate_mins": 1
+        },
+        {
+          "service_timetable": {
+            "id": "http://transportapi.com/v3/uk/train/service/train_uid:W40193/2015-01-20/timetable.json?app_id=...&app_key=...&live=true"
+          },
+          "category": "XX",
+          "mode": "train",
+          "service": "24648004",
+          "train_uid": "W40193",
+          "platform": "11",
+          "operator": "SE",
+          "aimed_departure_time": "12:52",
+          "aimed_arrival_time": null,
+          "aimed_pass_time": null,
+          "origin_name": "London St Pancras",
+          "source": "Network Rail",
+          "destination_name": "Faversham",
+          "status": "STARTS HERE",
+          "expected_arrival_time": null,
+          "expected_departure_time": "12:52",
+          "best_arrival_estimate_mins": null,
+          "best_departure_estimate_mins": 5
+        },
+        {
+          "service_timetable": {
+            "id": "http://transportapi.com/v3/uk/train/service/train_uid:L02491/2015-01-20/timetable.json?app_id=...&app_key=...&live=true"
+          },
+          "category": "OO",
+          "mode": "train",
+          "service": "22720000",
+          "train_uid": "L02491",
+          "platform": "A",
+          "operator": "TL",
+          "aimed_departure_time": "12:54",
+          "aimed_arrival_time": "12:52",
+          "aimed_pass_time": null,
+          "origin_name": "Bedford",
+          "source": "Network Rail",
+          "destination_name": "Brighton",
+          "status": "LATE",
+          "expected_arrival_time": "13:05",
+          "expected_departure_time": "13:07",
+          "best_arrival_estimate_mins": 18,
+          "best_departure_estimate_mins": 20
+        }
+      ]
+    }
+  }
+  Hide Schema
+  
+  {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "live response schema.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "date": {
+        "description": "The date of interest specified in the request in yyyy-dd-mm format.",
+        "type": "string"
+      },
+      "time_of_day": {
+        "description": "The time of interest specified in the request in hh:mm format.",
+        "type": "string"
+      },
+      "request_time": {
+        "description": "The time of the request in ISO 8601 format.",
+        "type": "string"
+      },
+      "station_name": {
+        "description": "The name of the station of interest.",
+        "type": "string"
+      },
+      "station_code": {
+        "description": "The station code of the station of interest as specified in the request.",
+        "type": "string"
+      },
+      "departures": {
+        "description": "Holds a collection of the requested train departures.",
+        "type": "object",
+        "properties": {
+          "all": {
+            "description": "A utility container for all departures.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "service_timetable": {
+                  "id": {
+                    "description": "Link to the corresponding train service timetable details. Depending on calling arguments may include extra query parameters to replicate the same source data used for output in the current request.",
+                    "type": "string"
+                  }
+                },
+                "mode": {
+                  "description": "The mode of the service: 'train' for regular services and 'bus' for replacement bus services.",
+                  "type": "string"
+                },
+                "category": {
+                  "description": "The category of the service: please refer to [full list](http://nrodwiki.rockshore.net/index.php/CIF_Codes#Train_Category) of possible values.",
+                  "type": "string"
+                },
+                "service": {
+                  "description": "The service code of the service.",
+                  "type": "string"
+                },
+                "train_uid": {
+                  "description": "The train uid of the service.",
+                  "type": "string"
+                },
+                "platform": {
+                  "description": "The platform at which the service would call at or pass through, if available.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "operator": {
+                  "description": "The ATOC code of the train operating company operating the service.",
+                  "type": "string"
+                },
+                "aimed_departure_time": {
+                  "description": "The aimed departure time of the service in hh:mm format according to the timetables. null if the service doesn't depart from the station of interest e.g. passing services.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "aimed_arrival_time": {
+                  "description": "The aimed arrival time of the service in hh:mm format according to the timetables. null if the service doesn't arrive at the station of interest e.g. passing services.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "aimed_pass_time": {
+                  "description": "The aimed pass time of the service in hh:mm format according to the timetables. null if the service doesn't pass through the station of interest, e.g. arrivals and departures.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "origin_name": {
+                  "description": "The name of the origin station for the service",
+                  "type": "string"
+                },
+                "destination_name": {
+                  "description": "The name of the destination station for the service",
+                  "type": "string"
+                },
+                "source": {
+                  "description": "information source e.g. 'Network Rail' or 'ATOC'",
+                  "type": "string",
+                  "enum": [
+                    "Network Rail",
+                    "ATOC"
+                  ]
+                },
+                "status": {
+                  "description": "The status of the service based on live data. If using Darwin data is enabled via darwin=true and the service appears as cancelled in Darwin, then this field would have a value of CANCELLED. A value of NO REPORT close to the departure time may indicate that the train starts at this location.",
+                  "type": "string",
+                  "enum": [
+                    "ARRIVED",
+                    "CANCELLED",
+                    "CHANGE OF IDENTITY",
+                    "CHANGE OF ORIGIN",
+                    "EARLY",
+                    "LATE",
+                    "NO REPORT",
+                    "OFF ROUTE",
+                    "ON TIME",
+                    "REINSTATEMENT",
+                    "STARTS HERE"
+                  ]
+                },
+                "expected_arrival_time": {
+                  "description": "Expected arrival time of the service. Based on live data if available, or timetable data if not. Can be in the past.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "expected_departure_time": {
+                  "description": "Expected departure time of the service. Based on live data if available, or timetable data if not. Can be in the past.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "best_arrival_estimate_mins": {
+                  "description": "Estimated time offset in minutes until arrival of the service. Based on live data if available, or timetable data if not. Can be negative.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "best_departure_estimate_mins": {
+                  "description": "Estimated time offset in minutes until departure of the service. Based on live data if available, or timetable data if not. Can be negative.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "status",
+                "expected_arrival_time",
+                "expected_departure_time",
+                "best_arrival_estimate_mins",
+                "best_departure_estimate_mins"
+              ]
+            }
+          }
+        },
+        "required": [
+          "all"
+        ]
+      }
+    },
+    "required": [
+      "date",
+      "time_of_day",
+      "request_time",
+      "station_name",
+      "station_code",
+      "departures"
+    ]
+  }

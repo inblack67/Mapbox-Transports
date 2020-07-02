@@ -1,23 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import StationContext from './context/stations/stationContext'
-import Preloader from './Preloader'
+import FoodContext from '../context/foods/foodContext'
+import Preloader from '../Preloader'
 
 const Map = () => {
 
     const [viewPort, setViewPort] = useState({
-        latitude: 51.508530,
-        longitude: -0.076132,
+        latitude: 39.799999,
+        longitude: -89.650002,
         width: "100vw",
         height: "80vh",
         zoom: 10
       })
 
-    const stationContext = useContext(StationContext);
+    const foodContext = useContext(FoodContext);
 
-    const { stations, loading, getLive } = stationContext;
+    const { foods, loading } = foodContext;
 
-    const [selectedStation, setSelectedStation] = useState(null);
+    const [selectedFarm, setSelectedFarm] = useState(null);
 
     if(loading){
         return <Preloader />
@@ -29,25 +29,28 @@ const Map = () => {
         onViewportChange={viewPort => setViewPort(viewPort)}
         mapStyle='mapbox://styles/inblack1967/ck8omk5xm3q4j1ioda783oxwj'
         >
-            { stations && stations.map(station => 
-                <Marker key={station.station_code} latitude={station.latitude} longitude={station.longitude}>
+            { foods && foods.map(food => 
+                <Marker key={food.farmer_id} latitude={food.location_1.coordinates[1]} longitude={food.location_1.coordinates[0]}>
                     <button onClick={ e => {
                         e.preventDefault();
-                        setSelectedStation(station)
+                        setSelectedFarm(food)
                     } }>
-                        <i className="fa fa-train fa-2x"></i>
+                        <i className="fa fa-utensils fa-2x"></i>
                     </button>
                 </Marker>
             ) }
 
-            { selectedStation && <Popup latitude={selectedStation.latitude} longitude={selectedStation.longitude} onClose={ e => setSelectedStation(null) } >
+            { selectedFarm && <Popup latitude={selectedFarm.location_1.coordinates[1]} longitude={selectedFarm.location_1.coordinates[0]} onClose={ e => setSelectedFarm(null) } >
                 <div className="container">
                     <h4>
-                        { selectedStation.name }
+                        { selectedFarm.farm_name }
                     </h4>
                     <p>
-                        { selectedStation.type }
+                        { selectedFarm.item }
                     </p>
+                    <span className='red-text'>
+                        { selectedFarm.category }
+                    </span>
                 </div>
             </Popup> }
 

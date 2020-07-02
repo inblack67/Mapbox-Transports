@@ -13,6 +13,14 @@ const StationState = (props) => {
 
     const [state, dispatch] = useReducer(StationReducer, initialState);
 
+    const getLive = async () => {
+        try {
+            console.log('live trains ran');
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const getStations = async ({ type, name }) => {
         try {
             const res = await axios(`http://transportapi.com/v3/uk/places.json?query=${name}&type=${type}_station&app_id=${process.env.REACT_APP_TRANSPORT_APPID}&app_key=${process.env.REACT_APP_TRANSPORT_KEY}
@@ -32,7 +40,8 @@ const StationState = (props) => {
     return (
         <StationContext.Provider value={{
             stations: state.stations,
-            getStations
+            getStations,
+            getLive
         }}>
             { props.children }
         </StationContext.Provider>
