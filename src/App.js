@@ -20,10 +20,8 @@ function App() {
     <FoodState>
     <StationState>
       <div className="App">
-        <SearchFoods />
         <FoodMap />
-        {/* <SearchStation />
-        <MapGL /> */}
+        <SearchFoods />
       </div>
     </StationState>
     </FoodState>
